@@ -9,7 +9,7 @@ export type Category = {
 };
 
 const fetchCategories = async (signal: any) => {
-  const data = await fetch("http://localhost:8080/api/v1/genres", {
+  const data = await fetch(`${import.meta.env.VITE_LOCAL_URL}/categories`, {
     signal,
   });
 
