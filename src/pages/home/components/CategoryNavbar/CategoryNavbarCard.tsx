@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Category } from "../../../../hooks/useFetchCategories";
-import { categoriesIconData, CategoryIcon } from "../../categoryData";
+import { categoriesIconData } from "../../categoryData";
 import { IconType } from "react-icons";
+import { Category, CategoryIcon } from "../../../../types/category";
 
 type CategoryCardProps = {
   category: Category;
