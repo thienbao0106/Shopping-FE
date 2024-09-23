@@ -23,12 +23,14 @@ const CategoryList = () => {
         theme === "dark" ? "bg-blue-500" : "bg-white"
       } shadow px-4 py-2 rounded-lg 2xl:w-1/5 w-full`}
     >
-      <h1 className="font-bold text-xl">Categories</h1>
+      <h1 className="font-bold lg:text-3xl text-lg mb-1">Categories</h1>
+
       <ListComponent
         data={data}
         renderItem={(category: Category) => (
           <CategoryCard key={category.id} category={category} />
         )}
+        className="flex 2xl:flex-col flex-row 2xl:gap-y-2 gap-x-8"
       />
     </section>
   );

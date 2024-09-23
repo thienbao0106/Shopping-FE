@@ -15,13 +15,17 @@ const fetchProducts = async (signal: any, pageSize: number, page?: number) => {
   return await data.json();
 };
 
-const useFetchProducts = (pageSize: number, page?: number) => {
+const useFetchProducts = (
+  pageSize: number,
+  queryKey: string,
+  page?: number
+) => {
   const { isError, isLoading, data } = useQuery<Product[]>({
     queryFn: async (context) => {
       const result = await fetchProducts(context.signal, pageSize, page);
       return result.data.content;
     },
-    queryKey: ["products"],
+    queryKey: [queryKey],
   });
 
   return { isError, isLoading, data };

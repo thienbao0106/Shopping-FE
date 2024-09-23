@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import CartDropDown from "./CartDropDown";
 import ProfileDropDown from "./ProfileDropDown";
 import SearchInput from "./SearchInput";
-import ThemeToggle from "./ThemeToggle";
+// import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { width } = useDimension();
@@ -26,7 +26,7 @@ const Navbar = () => {
         )}
       </div>
       <div className="flex-none lg:gap-x-2">
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
         <CartDropDown />
         <ProfileDropDown />
       </div>

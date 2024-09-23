@@ -9,10 +9,15 @@ import { Product } from "../../../../types/product";
 const ListRecommended = () => {
   const pageSize = 4,
     numberOfPage = 0;
-  const { data, isLoading, isError } = useFetchProducts(pageSize, numberOfPage);
+  const { data, isLoading, isError } = useFetchProducts(
+    pageSize,
+    "recommendations",
+    numberOfPage
+  );
   if (isLoading) return <Loading message="Loading..." />;
   if (isError) return <Error message="Loading..." />;
   if (!data) return <div>Unknown data</div>;
+  console.log(data);
   return (
     <main className="">
       <h1 className="font-bold lg:text-3xl text-lg mb-5">Recommended</h1>
