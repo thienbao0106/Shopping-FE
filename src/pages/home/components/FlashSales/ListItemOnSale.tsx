@@ -3,7 +3,7 @@ import ListComponent from "../../../../components/ListComponent";
 import Loading from "../../../../components/Loading";
 import useFetchProducts from "../../../../hooks/useFetchProducts";
 import { Product } from "../../../../types/product";
-import SaleCard from "./SaleCard";
+import SaleItemCard from "./SaleItemCard";
 
 const ListItemOnSale = () => {
   const salePageSize = 2,
@@ -24,7 +24,7 @@ const ListItemOnSale = () => {
         data={data}
         className="flex 2xl:flex-row flex-col 2xl:gap-x-3 gap-y-2"
         renderItem={(product: Product) => (
-          <SaleCard product={product} key={product.id} />
+          <SaleItemCard product={product} key={product.id} />
         )}
       />
     </main>

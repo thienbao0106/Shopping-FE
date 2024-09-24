@@ -2,7 +2,7 @@ import Loading from "../../../../components/Loading";
 import Error from "../../../../components/Error";
 
 import useFetchProducts from "../../../../hooks/useFetchProducts";
-import ProductCard from "../ProductCard";
+import ProductCard from "../../../../components/ProductCard";
 import ListComponent from "../../../../components/ListComponent";
 import { Product } from "../../../../types/product";
 
@@ -27,7 +27,7 @@ const ListRecommended = () => {
         renderItem={(product: Product) => (
           <ProductCard product={product} key={product.id} />
         )}
-        className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-full mt-2"
+        className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5 w-full mt-2"
       />
     </main>
   );

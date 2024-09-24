@@ -13,7 +13,9 @@ const Navbar = () => {
   return (
     <div className=" navbar pb-4 bg-base-100 lg:gap-x-8 gap-x-2 border border-b-1 border-x-0 border-t-0 border-b-slate-300 lg:px-40 px-0">
       <div className="flex-none">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to="/" className="btn btn-ghost text-xl">
+          daisyUI
+        </Link>
       </div>
 
       <div className="flex-1 md:w-[80%] w-[30%]">
