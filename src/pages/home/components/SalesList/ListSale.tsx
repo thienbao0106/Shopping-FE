@@ -6,7 +6,7 @@ import useFetchSales from "../../../../hooks/useFetchSales";
 import SaleCard from "./SaleCard";
 
 const ListSale = () => {
-  const { data, isError, isLoading } = useFetchSales();
+  const { data, isError, isLoading } = useFetchSales(false);
   if (isLoading) return <Loading message="Loading..." />;
   if (isError) return <Error message="Loading..." />;
   if (!data) return <div>Unknown data</div>;

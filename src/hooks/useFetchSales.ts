@@ -8,11 +8,14 @@ const fetchSales = async (signal: any) => {
   });
   return await result.json();
 };
-const useFetchSales = () => {
+const useFetchSales = (isProducts: boolean) => {
   const { isError, isLoading, data } = useQuery<Sale[]>({
     queryFn: async (context) => {
       const result = await fetchSales(context.signal);
-      return result.data;
+      return result.data.map((data: any) => {
+        if (!isProducts) delete data.products;
+        return data;
+      });
     },
     queryKey: ["fetchAllSales"],
   });
