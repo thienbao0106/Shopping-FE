@@ -1,5 +1,6 @@
 import { Product } from "../types/product";
-import errorImage from "../../public/error.png";
+import errorImage from "/error.png";
+import { convertCurrency } from "../utils/currency";
 type ProductCardProps = {
   product: Product;
 };
@@ -13,7 +14,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </figure>
       <div className="lg:card-body p-2 lg:space-y-0 space-y-2">
         <h2 className="card-title truncate ">{product.name}</h2>
-        <p className="font-semibold">{product.price}$</p>
+        <p className="font-semibold">{convertCurrency(product.price)}</p>
       </div>
     </div>
   );
