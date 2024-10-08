@@ -1,19 +1,23 @@
 import Loading from "../../../../components/Loading";
 import Error from "../../../../components/Error";
-
-import useFetchProducts from "../../../../hooks/useFetchProducts";
 import ProductCard from "../../../../components/ProductCard";
 import ListComponent from "../../../../components/ListComponent";
 import { Product } from "../../../../types/product";
+import { ApiPage } from "../../../../types/api";
+import useFetchData from "../../../../hooks/useFetchData";
 
 const ListRecommended = () => {
-  const pageSize = 4,
-    numberOfPage = 0;
-  const { data, isLoading, isError } = useFetchProducts(
-    pageSize,
-    "recommendations",
-    numberOfPage
+  const page: ApiPage = {
+    pageSize: 4,
+    numPage: 0,
+  };
+
+  const { data, isLoading, isError } = useFetchData<Product[]>(
+    "products",
+    "getRecommendations",
+    page
   );
+
   if (isLoading) return <Loading message="Loading..." />;
   if (isError) return <Error message="Loading..." />;
   if (!data) return <div>Unknown data</div>;

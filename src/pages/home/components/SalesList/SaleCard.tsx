@@ -6,10 +6,18 @@ type SaleCardProps = {
 };
 
 const SaleCard = ({ sale }: SaleCardProps) => {
-  console.log(sale);
+  console.log(sale.images && sale.images.length);
   return (
     <div>
-      <Link to={`/sale/${sale.id}`}>{sale.name}</Link>
+      <Link to={`/sale/${sale.id}`}>
+        {sale.images && sale.images.length > 0 && (
+          <img
+            className="rounded-md"
+            src={sale.images[0]?.url}
+            alt={`${sale.id}-image`}
+          />
+        )}
+      </Link>
     </div>
   );
 };

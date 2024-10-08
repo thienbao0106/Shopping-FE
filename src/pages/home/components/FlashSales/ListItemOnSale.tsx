@@ -1,22 +1,26 @@
 import Error from "../../../../components/Error";
 import ListComponent from "../../../../components/ListComponent";
 import Loading from "../../../../components/Loading";
-import useFetchProducts from "../../../../hooks/useFetchProducts";
+import useFetchData from "../../../../hooks/useFetchData";
+import { ApiPage } from "../../../../types/api";
 import { Product } from "../../../../types/product";
 import SaleItemCard from "./SaleItemCard";
 
 const ListItemOnSale = () => {
-  const salePageSize = 2,
-    numberOfPage = 0;
-  const { data, isLoading, isError } = useFetchProducts(
-    salePageSize,
-    "sales",
-    numberOfPage
+  const page: ApiPage = {
+    pageSize: 2,
+    numPage: 0,
+  };
+
+  const { data, isLoading, isError } = useFetchData<Product[]>(
+    "products",
+    "getAllProducts",
+    page
   );
   if (isLoading) return <Loading message="Loading..." />;
   if (isError) return <Error message="Loading..." />;
   if (!data) return <div>Unknown data</div>;
-  console.log(data.length);
+  console.log(data);
   return (
     <main>
       <h1 className="font-bold lg:text-3xl text-lg mb-5">Flash Sales</h1>

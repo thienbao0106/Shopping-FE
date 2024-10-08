@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import useFetchCategories from "../../../../hooks/useFetchCategories";
 import CategoryCard from "./CategoryNavbarCard";
 import {
   ThemeContext,
@@ -9,14 +8,18 @@ import { Category } from "../../../../types/category";
 import ListComponent from "../../../../components/ListComponent";
 import Loading from "../../../../components/Loading";
 import Error from "../../../../components/Error";
+import useFetchData from "../../../../hooks/useFetchData";
 
 const CategoryList = () => {
-  const isNavbar = true;
   const { theme }: ThemeContextType = useContext(ThemeContext);
-  const { isError, isLoading, data } = useFetchCategories(isNavbar);
+  const { isError, isLoading, data } = useFetchData<Category[]>(
+    "categories",
+    "getAllCategories"
+  );
   if (isLoading) return <Loading message="Loading..." />;
   if (isError) return <Error message="Loading..." />;
   if (!data || data?.length === 0) return <div>Don't have any data</div>;
+
   return (
     <section
       className={`${
