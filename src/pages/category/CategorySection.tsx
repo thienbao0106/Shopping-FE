@@ -1,13 +1,19 @@
 import { useParams } from "react-router-dom";
-import useFindCategory from "./hooks/useFindCategory";
+
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import ListProductOnCategory from "./components/ListProductOnCategory";
+import useFetchDetailData from "../../hooks/useFetchDetailData";
+import { Category } from "../../types/category";
 
-const Category = () => {
+const CategorySection = () => {
   const { id } = useParams();
 
-  const { data, isError, isLoading } = useFindCategory(id || "");
+  const { data, isError, isLoading } = useFetchDetailData<Category>(
+    "categories",
+    "findCategoryById",
+    id || ""
+  );
   if (isLoading) return <Loading message="Loading..." />;
   if (isError) return <Error message="Loading..." />;
   if (!data) return <div>Unknown data</div>;
@@ -22,4 +28,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default CategorySection;
