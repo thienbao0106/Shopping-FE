@@ -2,6 +2,7 @@ import { Product } from "../types/product";
 import errorImage from "/error.png";
 import { convertCurrency } from "../utils/currency";
 import moment from "moment";
+import { Link } from "react-router-dom";
 type ProductCardProps = {
   product: Product;
 };
@@ -19,7 +20,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="card bg-base-100 w-full shadow-xl">
       <figure>
-        <img src={product.images[0] || errorImage} alt={product.name} />
+        <Link to={`/product/${product.id}`}>
+          <img src={product.images[0] || errorImage} alt={product.name} />
+        </Link>
       </figure>
       <div className="lg:card-body p-2 lg:space-y-0 space-y-2">
         <h2 className="card-title truncate ">{product.name}</h2>

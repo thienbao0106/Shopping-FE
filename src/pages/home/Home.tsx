@@ -4,6 +4,7 @@ import ListItemOnSale from "./components/FlashSales/ListItemOnSale";
 import ListSale from "./components/SalesList/ListSale";
 
 const Home = () => {
+  document.title = "Home";
   return (
     <main className="w-full flex 2xl:flex-row flex-col lg:gap-x-3 gap-y-3">
       <CategoryList />

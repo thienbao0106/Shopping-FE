@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Error from "../../../../components/Error";
 import ListComponent from "../../../../components/ListComponent";
 import Loading from "../../../../components/Loading";
@@ -20,15 +21,17 @@ const ListItemOnSale = () => {
   if (isLoading) return <Loading message="Loading..." />;
   if (isError) return <Error message="Loading..." />;
   if (!data) return <div>Unknown data</div>;
-  console.log(data);
+
   return (
     <main>
       <h1 className="font-bold lg:text-3xl text-lg mb-5">Flash Sales</h1>
       <ListComponent
         data={data}
-        className="flex 2xl:flex-row flex-col 2xl:gap-x-3 gap-y-2"
+        className="grid 2xl:grid-cols-6 xl:grid-cols-4 md:grid-cols-3 grid-cols-2"
         renderItem={(product: Product) => (
-          <SaleItemCard product={product} key={product.id} />
+          <Link to={`/product/${product.id}`}>
+            <SaleItemCard product={product} key={product.id} />
+          </Link>
         )}
       />
     </main>
